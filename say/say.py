@@ -35,7 +35,7 @@ def num_chunks(n):
         return(chunks)
     
 def scale_words(chunks):
-    thousands = ['', 'thousand', 'million', 'billion']
+    thousands = ['', ' thousand ', ' million ', ' billion ']
     if len(chunks) == 1:
         return(str(chunks[0]))
     elif len(chunks) == 2:
@@ -62,9 +62,15 @@ def hundreds(n):
         t = ones[a] + "hundred " 
     elif a != 0: 
         t = ones[a] + "hundred and "
-    
+    else:
+        t = num99(n)
+    h = num99(n%100)
+    return(t + h)
 
 def say(number):
-
+    chunks = num_chunks(number)
+    for i in range(len(chunks)):
+        chunks[i] = hundreds(chunks[i])
+    return(scale_words(chunks))
 
 
