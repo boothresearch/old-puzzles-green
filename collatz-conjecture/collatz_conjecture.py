@@ -1,8 +1,9 @@
+
 def steps(number):
-    if number is not int:
+    if type(number) is not int:
             raise TypeError('Work with integers only')
-    if number is int & number < 0:
-            raise ValueError('WOrk with positive integers only')
+    if number <= 0:
+            raise ValueError('Work with positive integers only')
     n = 0
     number_ini = number
     print(n, number)
